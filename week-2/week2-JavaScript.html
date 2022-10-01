@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week2-assignment</title>
+</head>
+
+<body>
+    <script>
+        // 基本規則同python
+
+        function calculate(min, max, step) {
+            let result = 0
+            for (let num = min; num <= max; num += step) { result = result + num }
+            console.log(result)
+
+        }
+
+        calculate(1, 3, 1)
+        calculate(4, 8, 2)
+        calculate(-1, 2, 2)
+
+        // 第二題
+        function avg(data) {
+            sum = 0
+            len = 0
+            for (index in data["employees"]) {
+                employee = data["employees"][index]
+                if (employee['manager'] == false) {
+                    sum += employee['salary']
+                    len += 1
+                }
+            }
+            console.log('average=', sum / len)
+        }
+
+        avg({
+            "employees": [
+                { "name": "John", "salary": 30000, "manager": false },
+                { "name": "Bob", "salary": 60000, "manager": true },
+                { "name": "Jenny", "salary": 50000, "manager": false },
+                { "name": "Tony", "salary": 40000, "manager": false }
+            ]
+        })
+        // 呼叫avg函式
+
+
+
+        // 第三題
+        function func(a) {
+            function product(b, c) {
+                console.log(a + b * c)
+            }
+            return product
+
+        }
+
+        func(2)(3, 4);
+        func(5)(1, -5);
+        func(-3)(2, 9);
+
+        // 第四題
+        function maxProduct(nums) {
+
+            let result = null
+            for (i = 0; i <= nums.length - 1; i++) {
+                for (j = i+1; j <= nums.length; j++) {
+                    product = nums[i] * nums[j]
+                    if (result == null || product > result) {
+                        result = product
+                    }
+                }
+            }
+            console.log(result)
+        }
+        maxProduct([5, 20, 2, 6])
+        maxProduct([10, -20, 0, 3])
+        maxProduct([10, -20, 0, -3])
+        maxProduct([-1, 2])
+        maxProduct([-1, 0, 2])
+        maxProduct([5, -1, -2, 0])
+        maxProduct([-5, -2])
+
+        // 第五題
+        function twoSum(nums, target) {
+            for (i = 0; i <= nums.length + 1; i++) {
+                for (j = i + 1; j <= nums.length; j++) {
+                    if (nums[i] + nums[j] == target) return [i, j]
+                }
+            }
+        }
+        let result = twoSum([2, 11, 7, 15], 9);
+        console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
+
+    </script>
+</body>
+
+</html>
